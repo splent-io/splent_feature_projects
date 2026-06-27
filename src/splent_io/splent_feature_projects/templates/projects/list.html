@@ -1,0 +1,34 @@
+{% extends "public_base.html" %}
+
+{% block title %}Projects — {{ SPLENT_APP }}{% endblock %}
+
+{% block hero %}
+    {{ render_block('hero', eyebrow='Research', title='Projects',
+                    subtitle='Funded research projects, active and past.') }}
+{% endblock %}
+
+{% set status_labels = {'active': 'Active', 'past': 'Past'} %}
+
+{% block content %}
+<div class="container section">
+    {% for status in ['active', 'past'] %}
+    {% set items = grouped.get(status, []) %}
+    {% if items %}
+    <h2 class="section-title">{{ status_labels[status] }}</h2>
+    <div class="card-grid">
+        {% for p in items %}
+        <a class="card" href="{{ url_for('projects.detail', slug=p.slug) }}">
+            {% if p.image %}<img class="card__img" src="{{ p.image }}" alt="">{% endif %}
+            <span class="badge">{{ p.status }}</span>
+            <h3 class="card__title">{{ p.acronym or p.title }}</h3>
+            {% if p.summary %}<p class="card__text">{{ p.summary }}</p>{% endif %}
+            {% if p.funding %}<p class="card__meta">{{ p.funding }}</p>{% endif %}
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% else %}
+    <p class="card__text">No projects yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

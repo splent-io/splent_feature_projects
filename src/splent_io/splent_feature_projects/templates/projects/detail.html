@@ -1,0 +1,25 @@
+{% extends "public_base.html" %}
+
+{% block title %}{{ project.acronym or project.title }} — {{ SPLENT_APP }}{% endblock %}
+
+{% block hero %}
+    {{ render_block('hero', eyebrow=project.acronym or 'Project',
+                    title=project.title, subtitle=project.summary) }}
+{% endblock %}
+
+{% block content %}
+<article class="container section">
+    <p class="card__meta">
+        {% if project.status %}🏷️ {{ project.status }}{% endif %}
+        {% if project.funding %} · 💶 {{ project.funding }}{% endif %}
+    </p>
+    {% if project.image %}
+    <img src="{{ project.image }}" alt="" style="max-width:100%;border-radius:var(--brand-radius);margin:1rem 0">
+    {% endif %}
+    <div class="prose">{{ project.description | safe }}</div>
+    {% if project.link %}
+    <p style="margin-top:1.5rem"><a class="btn btn-primary" href="{{ project.link }}">More info</a></p>
+    {% endif %}
+    <p style="margin-top:2rem"><a href="{{ url_for('projects.index') }}">← Back to projects</a></p>
+</article>
+{% endblock %}
