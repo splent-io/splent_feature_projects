@@ -63,9 +63,7 @@ def _unique_slug(title, exclude_id=None):
 def _ordered_groups():
     """All projects (incl. drafts) grouped by status; known statuses first."""
     grouped = {}
-    for p in Project.query.order_by(
-        Project.order.asc(), Project.title.asc()
-    ).all():
+    for p in Project.query.order_by(Project.order.asc(), Project.title.asc()).all():
         grouped.setdefault(p.status or "active", []).append(p)
     ordered = {g: grouped.pop(g) for g in KNOWN_STATUSES if g in grouped}
     ordered.update(grouped)
@@ -73,9 +71,7 @@ def _ordered_groups():
 
 
 def _known_groups():
-    existing = [
-        s[0] for s in db.session.query(Project.status).distinct().all() if s[0]
-    ]
+    existing = [s[0] for s in db.session.query(Project.status).distinct().all() if s[0]]
     seen, out = set(), []
     for g in KNOWN_STATUSES + existing:
         if g and g not in seen:

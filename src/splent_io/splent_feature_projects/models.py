@@ -15,7 +15,7 @@ class Project(db.Model):
     title = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False, unique=True, index=True)
     summary = db.Column(db.Text, default="")
-    description = db.Column(db.Text, default="")      # rich text / HTML
+    description = db.Column(db.Text, default="")  # rich text / HTML
     status = db.Column(db.String(32), default="active")  # active|past
     link = db.Column(db.String(512), default="")
     image = db.Column(db.String(512), default="")

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "splent_feature_projects"
-version = "0.0.1"
+version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.13"
 
@@ -23,34 +23,30 @@ exclude = ["*.tests", "*.tests.*"]
 [tool.splent]
 cli_version = "1.11.0"
 
-# ── Feature Contract ──────────────────────────────────────────────────────────
-# Declares what this feature provides to and requires from the product.
-# Used by `splent feature:check` and `splent product:derive` for validation.
+# ── Feature Contract (auto-generated) ────────────────────────────────────────
+# Do not edit manually — re-run `splent feature:contract --write` to refresh.
 [tool.splent.contract]
 description = "Projects — funded research projects, active and past (public list/detail grouped by status + admin CRUD)"
 
 [tool.splent.contract.provides]
-# Routes exposed by this feature
-routes = ["/projects", "/projects/<slug>"]
-# Blueprint names registered into Flask
-blueprints = ["projects_bp"]
-# SQLAlchemy models introduced by this feature
-models = ["Project"]
-# CLI commands added by this feature
-commands = []
+routes     = ["/admin/projects", "/admin/projects/<int:project_id>/delete", "/admin/projects/<int:project_id>/edit", "/admin/projects/<int:project_id>/move", "/admin/projects/new", "/projects", "/projects/<slug>"]
+blueprints = []
+models     = ["Project"]
+commands   = ["hello"]
+hooks      = ["layout.authenticated_sidebar"]
+services   = ["ProjectsService"]
+signals    = []
+translations = ["es"]
+docker     = []
 
 [tool.splent.contract.requires]
-# Other SPLENT features this feature depends on (e.g. ["auth", "mail"])
-features = ["theme"]
-# Environment variables this feature expects to be set
+features = []
 env_vars = []
+signals  = []
 
-# ── Extension points ──────────────────────────────────────────────────────────
-# Declares what other features can override or extend via refinement.
-# See: splent feature:xray
 [tool.splent.contract.extensible]
-services = []
-templates = ["projects/list.html", "projects/detail.html", "projects/admin/list.html", "projects/admin/form.html"]
-models = ["Project"]
-hooks = []
-routes = false
+services  = ["ProjectsService"]
+templates = ["projects/admin/form.html", "projects/admin/list.html", "projects/detail.html", "projects/list.html"]
+models    = ["Project"]
+hooks     = ["layout.authenticated_sidebar"]
+routes    = false
