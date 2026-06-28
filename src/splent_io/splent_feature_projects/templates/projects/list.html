@@ -20,9 +20,8 @@
         <a class="card" href="{{ url_for('projects.detail', slug=p.slug) }}">
             {% if p.image %}<img class="card__img" src="{{ p.image }}" alt="">{% endif %}
             <span class="badge">{{ p.status }}</span>
-            <h3 class="card__title">{{ p.acronym or p.title }}</h3>
+            <h3 class="card__title">{{ p.title }}</h3>
             {% if p.summary %}<p class="card__text">{{ p.summary }}</p>{% endif %}
-            {% if p.funding %}<p class="card__meta">{{ p.funding }}</p>{% endif %}
         </a>
         {% endfor %}
     </div>

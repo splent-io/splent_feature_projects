@@ -2,17 +2,20 @@ from splent_framework.db import db
 
 
 class Project(db.Model):
-    """A research project: funded, active or past."""
+    """A project: active or past.
+
+    Generic and reusable by any product. Research-specific fields (acronym,
+    principal investigator, funding agency, programme, budget, dates, …) are
+    added on top by the ``splent_feature_research_projects`` refinement.
+    """
 
     __tablename__ = "project"
 
     id = db.Column(db.Integer, primary_key=True)
-    acronym = db.Column(db.String(64), default="")
     title = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False, unique=True, index=True)
     summary = db.Column(db.Text, default="")
     description = db.Column(db.Text, default="")      # rich text / HTML
-    funding = db.Column(db.String(255), default="")
     status = db.Column(db.String(32), default="active")  # active|past
     link = db.Column(db.String(512), default="")
     image = db.Column(db.String(512), default="")

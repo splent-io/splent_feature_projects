@@ -11,17 +11,9 @@
 <form method="POST" class="card">
     <div class="card-body">
         <div class="row g-3">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <label class="form-label">Title *</label>
                 <input name="title" class="form-control" required value="{{ project.title if project else '' }}">
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Acronym</label>
-                <input name="acronym" class="form-control" value="{{ project.acronym if project else '' }}" placeholder="e.g. SPLENT">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Funding</label>
-                <input name="funding" class="form-control" value="{{ project.funding if project else '' }}" placeholder="e.g. EU H2020">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Status</label>

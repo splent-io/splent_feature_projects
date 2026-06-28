@@ -50,7 +50,7 @@ env_vars = []
 # See: splent feature:xray
 [tool.splent.contract.extensible]
 services = []
-templates = ["projects/list.html", "projects/detail.html"]
-models = []
+templates = ["projects/list.html", "projects/detail.html", "projects/admin/list.html", "projects/admin/form.html"]
+models = ["Project"]
 hooks = []
 routes = false

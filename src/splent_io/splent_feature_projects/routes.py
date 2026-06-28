@@ -85,18 +85,34 @@ def _known_groups():
 
 
 def _form_to_data(form):
-    return {
-        "acronym": (form.get("acronym") or "").strip(),
-        "title": (form.get("title") or "").strip(),
-        "summary": (form.get("summary") or "").strip(),
-        "description": (form.get("description") or "").strip(),
-        "funding": (form.get("funding") or "").strip(),
-        "status": (form.get("status") or "active").strip() or "active",
-        "link": (form.get("link") or "").strip(),
-        "image": (form.get("image") or "").strip(),
-        "order": int(form.get("order") or 0),
-        "published": bool(form.get("published")),
-    }
+    """Map the submitted form to the Project columns.
+
+    Iterates the model's columns so the admin form adapts automatically to
+    whatever fields the model exposes — including the ones added by the
+    research_projects refinement (acronym, funding_agency, dates, …). Only
+    columns present in the form are set.
+    """
+    import datetime
+
+    data = {}
+    for col in Project.__table__.columns:
+        name = col.name
+        if name in ("id", "slug"):
+            continue
+        ctype = col.type
+        if isinstance(ctype, db.Boolean):
+            data[name] = name in form  # checkbox present -> True
+        elif name in form:
+            raw = form.get(name)
+            if isinstance(ctype, db.Integer):
+                data[name] = int(raw or 0)
+            elif isinstance(ctype, db.Date):
+                data[name] = datetime.date.fromisoformat(raw) if raw else None
+            else:
+                data[name] = (raw or "").strip()
+    data.setdefault("title", "")
+    data.setdefault("status", "active")
+    return data
 
 
 @projects_bp.route("/admin/projects", methods=["GET"])

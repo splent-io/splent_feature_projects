@@ -1,9 +1,9 @@
 {% extends "public_base.html" %}
 
-{% block title %}{{ project.acronym or project.title }} — {{ SPLENT_APP }}{% endblock %}
+{% block title %}{{ project.title }} — {{ SPLENT_APP }}{% endblock %}
 
 {% block hero %}
-    {{ render_block('hero', eyebrow=project.acronym or _('Project'),
+    {{ render_block('hero', eyebrow=_('Project'),
                     title=project.title, subtitle=project.summary) }}
 {% endblock %}
 
@@ -11,7 +11,6 @@
 <article class="container section">
     <p class="card__meta">
         {% if project.status %}🏷️ {{ project.status }}{% endif %}
-        {% if project.funding %} · 💶 {{ project.funding }}{% endif %}
     </p>
     {% if project.image %}
     <img src="{{ project.image }}" alt="" style="max-width:100%;border-radius:var(--brand-radius);margin:1rem 0">
