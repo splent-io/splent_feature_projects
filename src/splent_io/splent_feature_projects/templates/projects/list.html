@@ -3,11 +3,11 @@
 {% block title %}Projects — {{ SPLENT_APP }}{% endblock %}
 
 {% block hero %}
-    {{ render_block('hero', eyebrow='Research', title='Projects',
-                    subtitle='Funded research projects, active and past.') }}
+    {{ render_block('hero', eyebrow=_('Research'), title=_('Projects'),
+                    subtitle=_('Funded research projects, active and past.')) }}
 {% endblock %}
 
-{% set status_labels = {'active': 'Active', 'past': 'Past'} %}
+{% set status_labels = {'active': _('Active'), 'past': _('Past')} %}
 
 {% block content %}
 <div class="container section">
@@ -28,7 +28,7 @@
     </div>
     {% endif %}
     {% else %}
-    <p class="card__text">No projects yet.</p>
+    <p class="card__text">{{ _('No projects yet.') }}</p>
     {% endfor %}
 </div>
 {% endblock %}

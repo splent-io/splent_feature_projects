@@ -1,0 +1,56 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-28 10:00+0000\n"
+"PO-Revision-Date: 2026-06-28 10:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:6
+msgid "Project"
+msgstr "Proyecto"
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:21
+msgid "More info"
+msgstr "Más información"
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:23
+msgid "Back to projects"
+msgstr "Volver a proyectos"
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:6
+msgid "Research"
+msgstr "Investigación"
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:6
+msgid "Projects"
+msgstr "Proyectos"
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:7
+msgid "Funded research projects, active and past."
+msgstr "Proyectos de investigación financiados, activos y pasados."
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:10
+msgid "Active"
+msgstr "Activos"
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:10
+msgid "Past"
+msgstr "Pasados"
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:31
+msgid "No projects yet."
+msgstr "Todavía no hay proyectos."
+

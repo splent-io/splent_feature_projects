@@ -1,0 +1,55 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-28 10:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:6
+msgid "Project"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:21
+msgid "More info"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/detail.html:23
+msgid "Back to projects"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:6
+msgid "Research"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:6
+msgid "Projects"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:7
+msgid "Funded research projects, active and past."
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:10
+msgid "Active"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:10
+msgid "Past"
+msgstr ""
+
+#: src/splent_io/splent_feature_projects/templates/projects/list.html:31
+msgid "No projects yet."
+msgstr ""
+
