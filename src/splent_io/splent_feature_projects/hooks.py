@@ -1,27 +1,23 @@
-"""
-Template hooks for splent_feature_projects.
+from flask import request, url_for
 
-Register hooks here to inject HTML into the product's layout slots.
-Only register layout.scripts if this feature has compiled frontend assets.
+from splent_framework.hooks.template_hooks import register_template_hook
 
-Examples:
 
-    from splent_framework.hooks.template_hooks import register_template_hook
-    from flask import render_template, url_for
+def projects_admin_link():
+    """Sidebar entry for the Projects management screen (the WP-plugin pattern)."""
+    active = (
+        "active"
+        if request.endpoint and request.endpoint.startswith("projects.admin")
+        else ""
+    )
+    return (
+        f'<li class="sidebar-item {active}">'
+        f'<a class="sidebar-link" href="{url_for("projects.admin_index")}">'
+        '<i class="align-middle" data-feather="folder"></i> '
+        '<span class="align-middle">Projects</span>'
+        "</a>"
+        "</li>"
+    )
 
-    # Inject a sidebar fragment
-    def my_sidebar():
-        return render_template("hooks/sidebar_items.html")
 
-    register_template_hook("layout.authenticated_sidebar", my_sidebar)
-
-    # Inject the compiled JS bundle (only if assets/dist/ exists)
-    def projects_scripts():
-        return (
-            '<script src="'
-            + url_for("projects.assets", subfolder="dist", filename="splent_feature_projects.bundle.js")
-            + '"></script>'
-        )
-
-    register_template_hook("layout.scripts", projects_scripts)
-"""
+register_template_hook("layout.authenticated_sidebar", projects_admin_link)

@@ -1,0 +1,65 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ 'Edit project' if project else 'Add project' }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ 'Edit project' if project else 'Add project' }}</h1>
+    <a href="{{ url_for('projects.admin_index') }}" class="btn btn-outline-secondary">← Back to projects</a>
+</div>
+
+<form method="POST" class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-8">
+                <label class="form-label">Title *</label>
+                <input name="title" class="form-control" required value="{{ project.title if project else '' }}">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Acronym</label>
+                <input name="acronym" class="form-control" value="{{ project.acronym if project else '' }}" placeholder="e.g. SPLENT">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Funding</label>
+                <input name="funding" class="form-control" value="{{ project.funding if project else '' }}" placeholder="e.g. EU H2020">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <input name="status" class="form-control" list="known-groups" value="{{ project.status if project else 'active' }}" placeholder="Pick an existing status or type a new one">
+                <datalist id="known-groups">{% for g in known_groups %}<option value="{{ g }}">{% endfor %}</datalist>
+                <div class="form-text">Type a new name to create a new status group.</div>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Summary</label>
+                <textarea name="summary" class="form-control" rows="2">{{ project.summary if project else '' }}</textarea>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Description <span class="text-muted">(rich text / HTML)</span></label>
+                <textarea name="description" class="form-control" rows="5">{{ project.description if project else '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Link</label>
+                <input name="link" type="url" class="form-control" value="{{ project.link if project else '' }}" placeholder="https://...">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Image URL</label>
+                <input name="image" class="form-control" value="{{ project.image if project else '' }}">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Order</label>
+                <input name="order" type="number" class="form-control" value="{{ project.order if project else 0 }}">
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="published" id="published" {{ 'checked' if (project.published if project else True) else '' }}>
+                    <label class="form-check-label" for="published">Published</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <a href="{{ url_for('projects.admin_index') }}" class="btn btn-link text-muted">Cancel</a>
+        <button class="btn btn-primary" type="submit">{{ 'Save changes' if project else 'Add project' }}</button>
+    </div>
+</form>
+{% endblock %}
