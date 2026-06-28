@@ -8,17 +8,25 @@
 {% endblock %}
 
 {% block content %}
-<article class="container section">
-    <p class="card__meta">
-        {% if project.status %}🏷️ {{ project.status }}{% endif %}
-    </p>
+<article class="container section project-detail">
+    {% if project.status %}
+    <div class="project-detail__header">
+        <span class="project-detail__status {% if project.status == 'past' %}project-detail__status--past{% endif %}">
+            <span class="project-detail__status-dot" aria-hidden="true"></span>{{ project.status }}
+        </span>
+    </div>
+    {% endif %}
+
     {% if project.image %}
-    <img src="{{ project.image }}" alt="" style="max-width:100%;border-radius:var(--brand-radius);margin:1rem 0">
+    <img class="project-detail__image" src="{{ project.image }}" alt="">
     {% endif %}
-    <div class="prose">{{ project.description | safe }}</div>
+
+    <div class="prose project-detail__body">{{ project.description | safe }}</div>
+
     {% if project.link %}
-    <p style="margin-top:1.5rem"><a class="btn btn-primary" href="{{ project.link }}">{{ _('More info') }}</a></p>
+    <p class="project-detail__actions"><a class="btn btn-primary" href="{{ project.link }}">{{ _('More info') }}</a></p>
     {% endif %}
-    <p style="margin-top:2rem"><a href="{{ url_for('projects.index') }}">← {{ _('Back to projects') }}</a></p>
+
+    <p><a class="project-detail__back" href="{{ url_for('projects.index') }}">← {{ _('Back to projects') }}</a></p>
 </article>
 {% endblock %}

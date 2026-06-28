@@ -8,11 +8,17 @@ projects_bp = create_blueprint(__name__)
 
 
 def init_feature(app):
+    from splent_framework.assets.asset_registry import register_asset
+
     # Projects is managed through its OWN custom admin screens (see routes.py
     # and hooks.py) — the WordPress-plugin pattern — instead of the generic
     # admin resource, so it does not call register_admin_resource.
     register_service(app, "ProjectsService", ProjectsService)
     register_nav_item(key="projects", label="Projects", href="/projects", order=20)
+    # Public project-detail stylesheet (token-driven; styled by the active skin).
+    register_asset(
+        "css", "projects.assets", order=100, subfolder="css", filename="projects.css"
+    )
 
 
 def inject_context_vars(app):

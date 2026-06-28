@@ -1,0 +1,71 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   splent_feature_projects — public project detail sheet.
+   Token-driven: every colour/radius comes from the theme's --brand-* custom
+   properties, so a skin restyles it for free. Loaded via register_asset on top
+   of the theme's public.css. No inline styles, no CDN.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.project-detail {
+    max-width: 72ch;
+}
+
+/* ── Header: title row + status badge ──────────────────────────────────────── */
+.project-detail__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+
+.project-detail__status {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--brand-primary, #2563eb);
+    background: color-mix(in srgb, var(--brand-primary, #2563eb) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-primary, #2563eb) 28%, transparent);
+}
+
+/* Past / archived projects read in a muted tone. */
+.project-detail__status--past {
+    color: var(--brand-muted, #6b7280);
+    background: color-mix(in srgb, var(--brand-muted, #6b7280) 12%, transparent);
+    border-color: color-mix(in srgb, var(--brand-muted, #6b7280) 28%, transparent);
+}
+
+.project-detail__status-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* ── Cover image ───────────────────────────────────────────────────────────── */
+.project-detail__image {
+    display: block;
+    max-width: 100%;
+    border-radius: var(--brand-radius, 12px);
+    margin: 0 0 1.5rem;
+}
+
+/* ── Body / actions ────────────────────────────────────────────────────────── */
+.project-detail__body {
+    margin: 0 0 1.5rem;
+}
+
+.project-detail__actions {
+    margin: 1.5rem 0 0;
+}
+
+.project-detail__back {
+    display: inline-block;
+    margin-top: 2rem;
+}
