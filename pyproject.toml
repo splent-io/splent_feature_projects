@@ -28,7 +28,7 @@ cli_version = "1.11.0"
 # Preserved across refreshes: description, category, tags, env, and
 # requires.features_manual (dependencies invisible to static analysis).
 [tool.splent.contract]
-description = "Projects — funded research projects, active and past (public list/detail grouped by status + admin CRUD)"
+description = "Funded research projects, active and past, with public list/detail grouped by status and admin CRUD"
 archetype = "full"
 
 [tool.splent.contract.provides]
