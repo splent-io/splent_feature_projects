@@ -25,8 +25,11 @@ cli_version = "1.11.0"
 
 # ── Feature Contract (auto-generated) ────────────────────────────────────────
 # Do not edit manually — re-run `splent feature:contract --write` to refresh.
+# Preserved across refreshes: description, category, tags, env, and
+# requires.features_manual (dependencies invisible to static analysis).
 [tool.splent.contract]
 description = "Projects — funded research projects, active and past (public list/detail grouped by status + admin CRUD)"
+archetype = "full"
 
 [tool.splent.contract.provides]
 routes     = ["/admin/projects", "/admin/projects/<int:project_id>/delete", "/admin/projects/<int:project_id>/edit", "/admin/projects/<int:project_id>/move", "/admin/projects/new", "/projects", "/projects/<slug>"]
